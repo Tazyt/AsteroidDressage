@@ -7,18 +7,34 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
     body {
       background: url('https://cdn.discordapp.com/attachments/1373414250428760208/1376280203872964641/StarStable_2025-05-25_18-36-26_1.png?ex=6834c052&is=68336ed2&hm=61f682228b17cbe19257561f5521a61d67b07433af81b959c01893eb45cc3020&') no-repeat center center fixed;
       background-size: cover;
       color: #ffeaea;
-      margin: 0;
       opacity: 0;
       animation: fadeIn 0.8s forwards;
+      flex: 1;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 100px 20px 60px;
     }
 
     .form-wrapper {
-      margin: 130px auto 80px;
       max-width: 900px;
+      width: 100%;
       padding: 40px;
       background: rgba(40, 0, 0, 0.85);
       box-shadow: 0 0 40px #aa2c2c88, inset 0 0 20px #7a0c0c88;
@@ -40,6 +56,19 @@
       color: #ffb3b3;
       text-shadow: 0 0 10px #ff4d4d, 0 0 25px #aa2c2c;
       margin-bottom: 30px;
+    }
+
+    .closed-message {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      text-align: center;
+      color: #ffc7c7;
+      text-shadow: 0 0 8px #ff4d4d, 0 0 18px #aa2c2c;
+      background: rgba(40, 0, 0, 0.85);
+      padding: 40px;
+      border-radius: 18px;
+      max-width: 800px;
+      box-shadow: 0 0 30px #aa2c2c88, inset 0 0 15px #7a0c0c88;
     }
 
     header {
@@ -116,20 +145,38 @@
     </nav>
   </header>
 
-  <div class="form-wrapper">
-    <h2>Apply Now</h2>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe_fFG-QjXkgpMquPQZgsEJUc7RxvO-eq8hUsJZRYnRfxxOzw/viewform?embedded=true" allowfullscreen>
-      Loading…
-    </iframe>
-  </div>
+  <main id="main-content">
+    <!-- Content inserted dynamically -->
+  </main>
 
   <footer>
     &copy; 2025 Asteroid Dressage. All Rights Reserved.
   </footer>
 
   <script>
-    // Fade in on load (already handled by body animation)
-    // Fade out on link click
+    const applicationsOpen = false; // Change this to true/false as needed
+
+    const main = document.getElementById('main-content');
+
+    if (applicationsOpen) {
+      main.innerHTML = `
+        <div class="form-wrapper">
+          <h2>Apply Now</h2>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe_fFG-QjXkgpMquPQZgsEJUc7RxvO-eq8hUsJZRYnRfxxOzw/viewform?embedded=true" allowfullscreen>
+            Loading…
+          </iframe>
+        </div>
+      `;
+    } else {
+      main.innerHTML = `
+        <div class="closed-message">
+          APPLICATIONS CLOSED<br />
+          CHECK BACK LATER ON OUR INSTAGRAM
+        </div>
+      `;
+    }
+
+    // Fade-out navigation
     document.querySelectorAll('a').forEach(link => {
       if (link.target !== '_blank' && link.href) {
         link.addEventListener('click', function (e) {
