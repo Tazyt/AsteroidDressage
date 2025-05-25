@@ -85,60 +85,71 @@ nav a:not(.btn-nav):hover {
 
 /* Hero Section */
 .hero {
-  margin-top: 100px;
-  height: 520px;
-  background: rgba(50, 0, 0, 0.75);
-  border-radius: 14px;
-  box-shadow:
-    0 0 25px #a30000cc,
-    inset 0 0 60px #600000aa;
-  text-align: center;
-  padding: 0 30px;
-  color: #ffe5e5;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+  padding: 40px 20px;
 }
 
-.hero h2 {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700;
-  font-size: 3.6rem;
-  letter-spacing: 3px;
+.hero-box {
+  background: rgba(30, 0, 0, 0.5);
+  border: 5px solid #ff4d4d;
+  border-radius: 40px;
+  padding: 60px 100px;       /* increased padding */
+  max-width: 1200px;          /* increased max-width */
+  width: 100%;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(255, 77, 77, 0.3), inset 0 0 15px rgba(255, 137, 137, 0.3);
+  animation: pulseGlow 3s infinite alternate;
+}
+
+
+.hero-box h2 {
+  font-size: 2.5rem;
+  color: #ffeaea;
+  margin-bottom: 10px;
   text-shadow:
-    0 0 10px #ffb3b3,
-    0 0 20px #d13a3a,
-    0 0 40px #aa2c2c;
+    0 0 10px #ff4d4d,
+    0 0 20px #ff1a1a;
 }
 
-.hero p {
-  font-size: 1.3rem;
-  font-weight: 500;
-  max-width: 650px;
-  margin: 0 auto 40px;
+.hero-box .glow {
+  color: #ff8b8b;
   text-shadow:
-    0 0 6px #f5c4c4,
-    0 0 12px #b22222;
+    0 0 10px #ff4d4d,
+    0 0 20px #ff1a1a,
+    0 0 30px #ffb3b3;
 }
 
-/* Neon Button */
+.hero-box .founder,
+.hero-box .established {
+  font-size: 1.1rem;
+  margin: 6px 0;
+  color: #ffcfcf;
+}
+
 .btn-apply {
-  background: transparent;
-  color: #ffb3b3;
-  font-weight: 700;
-  font-size: 1.3rem;
-  padding: 18px 50px;
-  border: 2.5px solid #ff4d4d;
-  border-radius: 50px;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  box-shadow:
-    0 0 12px #ff4d4d,
-    0 0 30px #b22222,
-    inset 0 0 15px #aa2c2c;
-  transition: all 0.35s ease;
+  margin-top: 20px;
   display: inline-block;
+  background-color: rgba(255, 77, 77, 0.2);
+  border: 2px solid #ff4d4d;
+  padding: 12px 24px;
+  color: #ffeaea;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  text-shadow: 0 0 5px #ffb3b3;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
+}
+
+.btn-apply:hover {
+  background-color: rgba(255, 77, 77, 0.4);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #ff4d4d, 0 0 50px #ff1a1a;
+  cursor: pointer;
 }
 
 .btn-apply:hover {
@@ -405,5 +416,4 @@ footer {
     opacity: 1;
   }
 }
-
 

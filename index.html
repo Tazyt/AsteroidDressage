@@ -27,57 +27,81 @@
     }
 
     /* Page navigation arrows */
-    .nav-arrows {
-      position: fixed;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      pointer-events: none;
-      z-index: 1000;
-      transform: translateY(-50%);
-    }
+    /* Page navigation arrows */
+.nav-arrows {
+  position: fixed;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 1000;
+  transform: translateY(-50%);
+  padding: 0 20px;
+}
 
-    .nav-arrows .arrow {
-      pointer-events: auto;
-      background: linear-gradient(145deg, #7a0c0c, #aa2c2c);
-      color: #ffeaea;
-      padding: 15px 20px;
-      border-radius: 50%;
-      font-size: 28px;
-      box-shadow:
-        0 0 10px #ff4d4d,
-        0 0 20px #aa2c2c,
-        inset 0 0 10px #ff8b8b;
-      cursor: pointer;
-      transition: 
-        background 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.4s ease;
-      user-select: none;
-      animation: pulseGlow 2.5s infinite alternate;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.nav-arrows .arrow {
+  pointer-events: auto;
+  background: rgba(255, 77, 77, 0.15);
+  backdrop-filter: blur(8px);
+  border: 2px solid #ff4d4d;
+  color: #ffeaea;
+  padding: 18px;
+  border-radius: 50%;
+  font-size: 26px;
+  box-shadow:
+    0 0 15px rgba(255, 77, 77, 0.7),
+    inset 0 0 10px rgba(255, 137, 137, 0.4);
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.4s ease;
+  user-select: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
 
-    .nav-arrows .arrow:hover {
-      background: linear-gradient(145deg, #ff4d4d, #ff1a1a);
-      box-shadow:
-        0 0 25px #ff6b6b,
-        0 0 50px #ff1a1a,
-        inset 0 0 20px #ffb3b3;
-      transform: scale(1.15) rotate(5deg);
-    }
+.nav-arrows .arrow:hover {
+  background: rgba(255, 77, 77, 0.4);
+  transform: scale(1.15);
+  box-shadow:
+    0 0 25px #ff6b6b,
+    0 0 50px #ff1a1a,
+    inset 0 0 25px #ffb3b3;
+}
 
-    .arrow-left {
-      margin-left: 12px;
-    }
+/* Tooltip-style labels on hover */
+.nav-arrows .arrow::after {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: -35px;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
 
-    .arrow-right {
-      margin-right: 12px;
-    }
+.nav-arrows .arrow:hover::after {
+  opacity: 1;
+}
+
+.arrow-left {
+  margin-left: 10px;
+}
+
+.arrow-right {
+  margin-right: 10px;
+}
+
 
     @keyframes pulseGlow {
       0% {
@@ -93,6 +117,9 @@
           inset 0 0 25px #ffb3b3;
       }
     }
+
+
+    
   </style>
 </head>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -116,13 +143,14 @@
   </div>
 
   <section class="hero">
-    <div>
-      <h2>Welcome to Asteroid Dressage</h2>
-      <p>Founded By Nat Darkborn</p>
-      <p>EST 17.05.25</p>
-      <a id="applyBtn" href="https://docs.google.com/forms/d/1HStDyJwbfLiBn5cSkq8AbQFo1acYveyikpqNw1WP_ic/viewform?edit_requested=true" target="_blank" class="btn-apply">Apply Now</a>
-    </div>
-  </section>
+  <div class="hero-box">
+    <h2>Welcome to <span class="glow">Asteroid Dressage</span></h2>
+    <p class="founder">Founded by <strong>Nat Darkborn</strong></p>
+    <p class="established">EST 17.05.25</p>
+    <a id="applyBtn" href="https://docs.google.com/forms/d/1HStDyJwbfLiBn5cSkq8AbQFo1acYveyikpqNw1WP_ic/viewform?edit_requested=true" target="_blank" class="btn-apply">Apply Now</a>
+  </div>
+</section>
+
 
   <section class="container requirements-section">
   <h3><i class="fas fa-list-check"></i> Requirements to Join</h3>
