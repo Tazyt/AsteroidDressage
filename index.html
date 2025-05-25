@@ -95,6 +95,9 @@
     }
   </style>
 </head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 <body>
   <header>
     <h1>Asteroid Dressage</h1>
@@ -184,6 +187,16 @@
     applyBtn.textContent = 'Applications Closed';
   }
 </script>
+
+<script>
+  // Bust CSS cache on each load
+  const css = document.querySelector('link[rel="stylesheet"]');
+  if (css) {
+    const href = css.getAttribute('href').split('?')[0];
+    css.setAttribute('href', `${href}?v=${Date.now()}`);
+  }
+</script>
+
 
 </body>
 </html>
