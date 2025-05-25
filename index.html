@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Asteroid Dressage</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* Restore background from your original */
+    body {
+      background: url('https://cdn.discordapp.com/attachments/1373414250428760208/1376280203872964641/StarStable_2025-05-25_18-36-26_1.png?ex=6834c052&is=68336ed2&hm=61f682228b17cbe19257561f5521a61d67b07433af81b959c01893eb45cc3020&') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffeaea;
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
+    }
+
+    /* Fade-in on page load */
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Page navigation arrows */
+    .nav-arrows {
+      position: fixed;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 1000;
+      transform: translateY(-50%);
+    }
+
+    .nav-arrows .arrow {
+      pointer-events: auto;
+      background: linear-gradient(145deg, #7a0c0c, #aa2c2c);
+      color: #ffeaea;
+      padding: 15px 20px;
+      border-radius: 50%;
+      font-size: 28px;
+      box-shadow:
+        0 0 10px #ff4d4d,
+        0 0 20px #aa2c2c,
+        inset 0 0 10px #ff8b8b;
+      cursor: pointer;
+      transition: 
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.4s ease;
+      user-select: none;
+      animation: pulseGlow 2.5s infinite alternate;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-arrows .arrow:hover {
+      background: linear-gradient(145deg, #ff4d4d, #ff1a1a);
+      box-shadow:
+        0 0 25px #ff6b6b,
+        0 0 50px #ff1a1a,
+        inset 0 0 20px #ffb3b3;
+      transform: scale(1.15) rotate(5deg);
+    }
+
+    .arrow-left {
+      margin-left: 12px;
+    }
+
+    .arrow-right {
+      margin-right: 12px;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow:
+          0 0 10px #ff4d4d,
+          0 0 20px #aa2c2c,
+          inset 0 0 10px #ff8b8b;
+      }
+      100% {
+        box-shadow:
+          0 0 20px #ff8b8b,
+          0 0 40px #ff4d4d,
+          inset 0 0 25px #ffb3b3;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Asteroid Dressage</h1>
+    <nav>
+    </nav>
+  </header>
+
+  <!-- Page Navigation Arrows -->
+  <div class="nav-arrows">
+    <a href="index.html" class="arrow arrow-left" aria-label="Go to Home">
+      <span>&#10094;</span>
+    </a>
+    <a href="apply.html" class="arrow arrow-right" aria-label="Go to Apply">
+      <span>&#10095;</span>
+    </a>
+  </div>
+
+  <section class="hero">
+    <div>
+      <h2>Welcome to Asteroid Dressage</h2>
+      <p>Founded By Nat Darkborn</p>
+      <p>EST 17.05.25</p>
+      <a id="applyBtn" href="https://docs.google.com/forms/d/1HStDyJwbfLiBn5cSkq8AbQFo1acYveyikpqNw1WP_ic/viewform?edit_requested=true" target="_blank" class="btn-apply">Apply Now</a>
+    </div>
+  </section>
+
+  <section class="container">
+    <h3>Requirements to Join</h3>
+    <ul class="requirements">
+      <li>Own Any Black Gen 3.5 Friesian Or Be Able To Buy It After Passing Trial (Dragon Is Not Allowed)</li>
+      <li>Have Some Knowledge Of Dressage</li>
+      <li>Able To Attend Events Which Range From 7:30pm-8:20pm</li>
+      <li>Be The Most Active You Can Be And Spread Kindness Throughout The Team</li>
+      <li>Must Be On UK Servers (Cupcake Valley)</li>
+      <li>Be Level 16+</li>
+      <li>Have Discord!</li>
+    </ul>
+  </section>
+
+  <!-- 🌐 Socials Section -->
+  <section class="container">
+    <h3>Connect With Us</h3>
+    <div class="socials">
+      <a href="https://discord.gg/rNg9SwpxVT" target="_blank" class="social-btn discord">
+        <i class="fab fa-discord"></i> Discord
+      </a>
+      <a href="https://www.instagram.com/asteroiddressage" target="_blank" class="social-btn instagram">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Asteroid Dressage. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Fade out effect on navigation link clicks
+    document.querySelectorAll('a[href]').forEach(link => {
+      if (
+        link.target !== '_blank' &&
+        !link.href.startsWith('mailto:') &&
+        !link.href.startsWith('tel:')
+      ) {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const href = link.href;
+          document.body.style.opacity = '0';
+          setTimeout(() => {
+            window.location.href = href;
+          }, 800);
+        });
+      }
+    });
+  </script>
+  <script>
+  const applicationsOpen = false; // Change to false to disable applications
+
+  const applyBtn = document.getElementById('applyBtn');
+  if (!applicationsOpen) {
+    applyBtn.removeAttribute('href');
+    applyBtn.removeAttribute('target');
+    applyBtn.style.pointerEvents = 'none';
+    applyBtn.style.opacity = '0.6';
+    applyBtn.style.cursor = 'not-allowed';
+    applyBtn.textContent = 'Applications Closed';
+  }
+</script>
+
+</body>
+</html>
