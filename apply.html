@@ -4,14 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Apply to Asteroid Dressage</title>
-  <link rel="stylesheet" href="style.css?v=1.0">
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- CSS (optional external override) -->
+  <link rel="stylesheet" href="style.css?v=1.0" />
+
   <style>
     html, body {
       height: 100%;
       margin: 0;
       display: flex;
       flex-direction: column;
+      font-family: 'Rajdhani', sans-serif;
     }
 
     body {
@@ -60,15 +67,29 @@
 
     .closed-message {
       font-family: 'Orbitron', sans-serif;
-      font-size: 2.2rem;
-      text-align: center;
       color: #ffc7c7;
+      text-align: center;
+      background: rgba(40, 0, 0, 0.92);
+      padding: 50px 30px;
+      border-radius: 20px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 0 40px #aa2c2c88, inset 0 0 20px #7a0c0c88;
       text-shadow: 0 0 8px #ff4d4d, 0 0 18px #aa2c2c;
-      background: rgba(40, 0, 0, 0.85);
-      padding: 40px;
-      border-radius: 18px;
-      max-width: 800px;
-      box-shadow: 0 0 30px #aa2c2c88, inset 0 0 15px #7a0c0c88;
+      animation: pulseGlow 2s infinite alternate;
+    }
+
+    .closed-message h2 {
+      font-size: 2.5rem;
+      color: #ffb3b3;
+      margin-bottom: 15px;
+    }
+
+    .closed-message p {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.2rem;
+      margin: 6px 0;
+      color: #ffdada;
     }
 
     header {
@@ -130,6 +151,15 @@
       }
     }
 
+    @keyframes pulseGlow {
+      from {
+        box-shadow: 0 0 20px #7a0c0c88, inset 0 0 10px #5a000088;
+      }
+      to {
+        box-shadow: 0 0 35px #aa2c2caa, inset 0 0 18px #8b1a1a88;
+      }
+    }
+
     .fade-out {
       opacity: 0;
       transition: opacity 0.8s ease-in-out;
@@ -137,12 +167,7 @@
   </style>
 </head>
 
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
-
 <body>
-
   <header>
     <h1>Asteroid Dressage</h1>
     <nav>
@@ -159,7 +184,7 @@
   </footer>
 
   <script>
-    const applicationsOpen = false; // Change this to true/false as needed
+    const applicationsOpen = false; // Change to true when open
 
     const main = document.getElementById('main-content');
 
@@ -175,13 +200,18 @@
     } else {
       main.innerHTML = `
         <div class="closed-message">
-          APPLICATIONS CLOSED<br />
-          CHECK BACK LATER ON OUR INSTAGRAM
+          <i class="fas fa-lock fa-3x" style="margin-bottom: 20px; color: #ff9999;"></i>
+          <h2>Applications Closed</h2>
+          <p>Thank you for your interest in Asteroid Dressage.</p>
+          <p>We’re not accepting applications at the moment.</p>
+          <p style="margin-top: 10px;">
+            <i class="fab fa-instagram"></i> Follow us on Instagram to stay updated!
+          </p>
         </div>
       `;
     }
 
-    // Fade-out navigation
+    // Smooth page transition
     document.querySelectorAll('a').forEach(link => {
       if (link.target !== '_blank' && link.href) {
         link.addEventListener('click', function (e) {
@@ -194,16 +224,13 @@
         });
       }
     });
+
+    // Bust CSS cache
+    const css = document.querySelector('link[rel="stylesheet"]');
+    if (css) {
+      const href = css.getAttribute('href').split('?')[0];
+      css.setAttribute('href', `${href}?v=${Date.now()}`);
+    }
   </script>
-  <script>
-  // Bust CSS cache on each load
-  const css = document.querySelector('link[rel="stylesheet"]');
-  if (css) {
-    const href = css.getAttribute('href').split('?')[0];
-    css.setAttribute('href', `${href}?v=${Date.now()}`);
-  }
-</script>
-
-
 </body>
 </html>
