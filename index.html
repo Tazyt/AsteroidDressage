@@ -26,82 +26,114 @@
       }
     }
 
+    /* Loading Screen */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(40, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    .spinner {
+      border: 8px solid rgba(255, 77, 77, 0.2);
+      border-top: 8px solid #ff4d4d;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .fade-out {
+      opacity: 0;
+      transition: opacity 10s ease-in-out;
+    }
+
     /* Page navigation arrows */
-    /* Page navigation arrows */
-.nav-arrows {
-  position: fixed;
-  top: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  z-index: 1000;
-  transform: translateY(-50%);
-  padding: 0 20px;
-}
+    .nav-arrows {
+      position: fixed;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 1000;
+      transform: translateY(-50%);
+      padding: 0 20px;
+    }
 
-.nav-arrows .arrow {
-  pointer-events: auto;
-  background: rgba(255, 77, 77, 0.15);
-  backdrop-filter: blur(8px);
-  border: 2px solid #ff4d4d;
-  color: #ffeaea;
-  padding: 18px;
-  border-radius: 50%;
-  font-size: 26px;
-  box-shadow:
-    0 0 15px rgba(255, 77, 77, 0.7),
-    inset 0 0 10px rgba(255, 137, 137, 0.4);
-  cursor: pointer;
-  transition:
-    background 0.3s ease,
-    transform 0.3s ease,
-    box-shadow 0.4s ease;
-  user-select: none;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
+    .nav-arrows .arrow {
+      pointer-events: auto;
+      background: rgba(255, 77, 77, 0.15);
+      backdrop-filter: blur(8px);
+      border: 2px solid #ff4d4d;
+      color: #ffeaea;
+      padding: 18px;
+      border-radius: 50%;
+      font-size: 26px;
+      box-shadow:
+        0 0 15px rgba(255, 77, 77, 0.7),
+        inset 0 0 10px rgba(255, 137, 137, 0.4);
+      cursor: pointer;
+      transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.4s ease;
+      user-select: none;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
 
-.nav-arrows .arrow:hover {
-  background: rgba(255, 77, 77, 0.4);
-  transform: scale(1.15);
-  box-shadow:
-    0 0 25px #ff6b6b,
-    0 0 50px #ff1a1a,
-    inset 0 0 25px #ffb3b3;
-}
+    .nav-arrows .arrow:hover {
+      background: rgba(255, 77, 77, 0.4);
+      transform: scale(1.15);
+      box-shadow:
+        0 0 25px #ff6b6b,
+        0 0 50px #ff1a1a,
+        inset 0 0 25px #ffb3b3;
+    }
 
-/* Tooltip-style labels on hover */
-.nav-arrows .arrow::after {
-  content: attr(aria-label);
-  position: absolute;
-  bottom: -35px;
-  background-color: rgba(0, 0, 0, 0.75);
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 13px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  white-space: nowrap;
-}
+    /* Tooltip-style labels on hover */
+    .nav-arrows .arrow::after {
+      content: attr(aria-label);
+      position: absolute;
+      bottom: -35px;
+      background-color: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+    }
 
-.nav-arrows .arrow:hover::after {
-  opacity: 1;
-}
+    .nav-arrows .arrow:hover::after {
+      opacity: 1;
+    }
 
-.arrow-left {
-  margin-left: 10px;
-}
+    .arrow-left {
+      margin-left: 10px;
+    }
 
-.arrow-right {
-  margin-right: 10px;
-}
-
+    .arrow-right {
+      margin-right: 10px;
+    }
 
     @keyframes pulseGlow {
       0% {
@@ -117,15 +149,17 @@
           inset 0 0 25px #ffb3b3;
       }
     }
-
-
-    
   </style>
 </head>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 <body>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="spinner"></div>
+  </div>
+
   <header>
     <h1>Asteroid Dressage</h1>
     <nav>
@@ -133,31 +167,28 @@
   </header>
 
   <section class="hero">
-  <div class="hero-box">
-    <h2>Welcome to <span class="glow">Asteroid Dressage</span></h2>
-    <p class="founder">Founded by <strong>Nat Darkborn</strong></p>
-    <p class="established">EST 17.05.25</p>
-    <a id="applyBtn" href="https://docs.google.com/forms/d/1HStDyJwbfLiBn5cSkq8AbQFo1acYveyikpqNw1WP_ic/viewform?edit_requested=true" target="_blank" class="btn-apply">Apply Now</a>
-  </div>
-</section>
-
+    <div class="hero-box">
+      <h2>Welcome to <span class="glow">Asteroid Dressage</span></h2>
+      <p class="founder">Founded by <strong>Nat Darkborn</strong></p>
+      <p class="established">EST 17.05.25</p>
+      <a id="applyBtn" href="https://docs.google.com/forms/d/1HStDyJwbfLiBn5cSkq8AbQFo1acYveyikpqNw1WP_ic/viewform?edit_requested=true" target="_blank" class="btn-apply">Apply Now</a>
+    </div>
+  </section>
 
   <section class="container requirements-section">
-  <h3><i class="fas fa-list-check"></i> Requirements to Join</h3>
-  <ul class="requirements">
-    <li><i class="fas fa-horse-head"></i> Own Any Black Gen 3.5 Friesian (Dragon Is Not Allowed)</li>
-    <li><i class="fas fa-book-open"></i> Have Some Knowledge Of Dressage</li>
-    <li><i class="fas fa-clock"></i> Able To Attend Events From 7:30PM - 8:20PM</li>
-    <li><i class="fas fa-heart"></i> Be Active And Spread Kindness Throughout The Team</li>
-    <li><i class="fas fa-server"></i> Must Be On UK Servers (Cupcake Valley)</li>
-    <li><i class="fas fa-level-up-alt"></i> Be Level 16 Or Above</li>
-    <li><i class="fab fa-discord"></i> Must Have Discord</li>
+    <h3><i class="fas fa-list-check"></i> Requirements to Join</h3>
+    <ul class="requirements">
+      <li><i class="fas fa-horse-head"></i> Own Any Black Gen 3.5 Friesian (Dragon Is Not Allowed)</li>
+      <li><i class="fas fa-book-open"></i> Have Some Knowledge Of Dressage</li>
+      <li><i class="fas fa-clock"></i> Able To Attend Events From 7:30PM - 8:20PM</li>
+      <li><i class="fas fa-heart"></i> Be Active And Spread Kindness Throughout The Team</li>
+      <li><i class="fas fa-server"></i> Must Be On UK Servers (Cupcake Valley)</li>
+      <li><i class="fas fa-level-up-alt"></i> Be Level 16 Or Above</li>
+      <li><i class="fab fa-discord"></i> Must Have Discord</li>
+    </ul>
+  </section>
 
-  </ul>
-</section>
-
-
-  <!-- 🌐 Socials Section -->
+  <!-- Socials Section -->
   <section class="container">
     <h3>Connect With Us</h3>
     <div class="socials">
@@ -173,6 +204,17 @@
   <footer>
     &copy; 2025 Asteroid Dressage. All Rights Reserved.
   </footer>
+
+  <script>
+    // Loader fade out on window load
+    window.addEventListener("load", function() {
+      const loader = document.getElementById("loading-screen");
+      loader.classList.add("fade-out");
+      setTimeout(() => {
+        loader.style.display = "none";
+      }, 800);
+    });
+  </script>
 
   <script>
     // Fade out effect on navigation link clicks
@@ -193,29 +235,27 @@
       }
     });
   </script>
+
   <script>
-  const applicationsOpen = true; // Change to false to disable applications
+    const applicationsOpen = true; // Change to false to disable applications
+    const applyBtn = document.getElementById('applyBtn');
+    if (!applicationsOpen) {
+      applyBtn.removeAttribute('href');
+      applyBtn.removeAttribute('target');
+      applyBtn.style.pointerEvents = 'none';
+      applyBtn.style.opacity = '0.6';
+      applyBtn.style.cursor = 'not-allowed';
+      applyBtn.textContent = 'Applications Closed';
+    }
+  </script>
 
-  const applyBtn = document.getElementById('applyBtn');
-  if (!applicationsOpen) {
-    applyBtn.removeAttribute('href');
-    applyBtn.removeAttribute('target');
-    applyBtn.style.pointerEvents = 'none';
-    applyBtn.style.opacity = '0.6';
-    applyBtn.style.cursor = 'not-allowed';
-    applyBtn.textContent = 'Applications Closed';
-  }
-</script>
-
-<script>
-  // Bust CSS cache on each load
-  const css = document.querySelector('link[rel="stylesheet"]');
-  if (css) {
-    const href = css.getAttribute('href').split('?')[0];
-    css.setAttribute('href', `${href}?v=${Date.now()}`);
-  }
-</script>
-
-
+  <script>
+    // Bust CSS cache on each load
+    const css = document.querySelector('link[rel="stylesheet"]');
+    if (css) {
+      const href = css.getAttribute('href').split('?')[0];
+      css.setAttribute('href', `${href}?v=${Date.now()}`);
+    }
+  </script>
 </body>
 </html>
