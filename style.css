@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Rajdhani:wght@400;700&display=swap');
 
+/* Global Styles */
 * {
   box-sizing: border-box;
 }
@@ -11,6 +12,7 @@ body {
   background-size: cover;
   color: #f5eaea;
   overflow-x: hidden;
+  font-size: 1.2rem; /* Base font-size; will scale with clamp() below */
 }
 
 /* Header */
@@ -97,8 +99,8 @@ nav a:not(.btn-nav):hover {
   background: rgba(30, 0, 0, 0.5);
   border: 6px solid #ff4d4d;
   border-radius: 50px;
-  padding: 80px 140px;       /* increased padding */
-  max-width: 1400px;          /* increased max-width */
+  padding: 80px 140px;
+  max-width: 1400px;
   width: 100%;
   backdrop-filter: blur(12px);
   box-shadow: 0 0 35px rgba(255, 77, 77, 0.3), inset 0 0 20px rgba(255, 137, 137, 0.3);
@@ -106,7 +108,7 @@ nav a:not(.btn-nav):hover {
 }
 
 .hero-box h2 {
-  font-size: 3rem;  /* increased font size */
+  font-size: 3rem;
   color: #ffeaea;
   margin-bottom: 12px;
   text-shadow:
@@ -124,7 +126,7 @@ nav a:not(.btn-nav):hover {
 
 .hero-box .founder,
 .hero-box .established {
-  font-size: 1.3rem; /* increased font size */
+  font-size: 1.3rem;
   margin: 8px 0;
   color: #ffcfcf;
 }
@@ -134,9 +136,9 @@ nav a:not(.btn-nav):hover {
   display: inline-block;
   background-color: rgba(255, 77, 77, 0.2);
   border: 3px solid #ff4d4d;
-  padding: 16px 28px; /* increased padding */
+  padding: 16px 28px;
   color: #ffeaea;
-  font-size: 1.3rem; /* increased font size */
+  font-size: 1.3rem;
   border-radius: 12px;
   text-decoration: none;
   text-shadow: 0 0 6px #ffb3b3;
@@ -160,7 +162,6 @@ nav a:not(.btn-nav):hover {
     inset 0 0 35px #ff9999;
   transform: scale(1.15);
 }
-
 
 /* Container */
 .container {
@@ -189,13 +190,13 @@ h3 {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin: 60px auto; /* Increased margin */
-  padding: 0 30px; /* Increased padding */
-  max-width: 1000px; /* Increased max-width */
+  margin: 60px auto;
+  padding: 0 30px;
+  max-width: 1000px;
 }
 
 .requirements-section h3 {
-  font-size: 30px; /* Increased font size */
+  font-size: 30px;
   margin-bottom: 20px;
   text-shadow: 0 0 10px #ff4d4d;
   display: flex;
@@ -213,11 +214,11 @@ h3 {
 
 .requirements li {
   background: rgba(255, 77, 77, 0.15);
-  margin: 12px 0; /* Increased margin */
-  padding: 16px 20px; /* Increased padding */
-  border-left: 6px solid #ff4d4d; /* Slightly thicker border */
-  border-radius: 8px; /* Increased border-radius */
-  font-size: 20px; /* Increased font size */
+  margin: 12px 0;
+  padding: 16px 20px;
+  border-left: 6px solid #ff4d4d;
+  border-radius: 8px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -236,9 +237,8 @@ h3 {
 
 .requirements li i {
   color: #ff8b8b;
-  min-width: 26px; /* Slightly increased icon size */
+  min-width: 26px;
 }
-
 
 /* Footer */
 footer {
@@ -265,42 +265,75 @@ footer {
   }
 }
 
-/* Responsive */
-@media (max-width: 700px) {
+/* Smooth scaling for all screens using clamp() */
+html {
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+
+/* Tablet Adjustments */
+@media (max-width: 1024px) {
   header {
-    padding: 15px 20px;
+    padding: 15px 25px;
   }
   header h1 {
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
-  nav a.btn-nav {
-    padding: 6px 14px;
-    font-size: 0.9rem;
+  .hero-box {
+    padding: 50px 80px;
   }
-  .hero {
-    height: auto;
-    padding: 60px 30px 70px;
-  }
-  .hero h2 {
+  .hero-box h2 {
     font-size: 2.5rem;
   }
-  .hero p {
-    font-size: 1.1rem;
-  }
   .btn-apply {
-    font-size: 1.1rem;
-    padding: 14px 36px;
+    font-size: 1.2rem;
   }
   .container {
-    padding: 0 15px;
-  }
-  ul.requirements {
-    padding: 30px 25px;
-    font-size: 1.1rem;
+    max-width: 90%;
+    padding: 20px;
   }
 }
 
+/* Mobile Adjustments */
+@media (max-width: 700px) {
+  header {
+    padding: 10px 15px;
+  }
+  header h1 {
+    font-size: 1.5rem;
+  }
+  nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .hero {
+    height: auto;
+    padding: 40px 20px;
+  }
+  .hero-box {
+    padding: 40px 60px;
+    border-radius: 30px;
+  }
+  .hero-box h2 {
+    font-size: 2.2rem;
+  }
+  .hero-box p {
+    font-size: 1rem;
+  }
+  .btn-apply {
+    font-size: 1rem;
+    padding: 12px 30px;
+  }
+  .container {
+    max-width: 100%;
+    padding: 15px;
+  }
+  .requirements li {
+    font-size: 18px;
+    padding: 12px 16px;
+  }
+}
 
+/* Socials Section */
 .socials {
   display: flex;
   justify-content: center;
@@ -341,6 +374,7 @@ footer {
   color: #2a0000;
 }
 
+/* Navigation Arrows */
 .nav-arrows {
   position: fixed;
   top: 50%;
@@ -416,4 +450,3 @@ footer {
     opacity: 1;
   }
 }
-
